@@ -18,12 +18,13 @@ const CreateBlog = catchAsync(async (req, res) => {
 });
 
 const GetSingleBlog = catchAsync(async (req, res) => {
-  const result = await BlogServices.getAllBlogFromDb();
+  const { blogId } = req.params;
+  const result = await BlogServices.getSingleBlogFromDb(blogId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "blogs  are retrived successfully",
+    message: "blog  is retrived successfully",
     data: result,
   });
 });

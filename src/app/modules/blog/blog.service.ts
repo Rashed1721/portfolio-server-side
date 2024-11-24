@@ -12,6 +12,10 @@ const getAllBlogFromDb = async () => {
   return allSkill;
 };
 
+const getSingleBlogFromDb = async (blogId: string) => {
+  const result = await Blog.findById(blogId);
+  return result;
+};
 const DeleteBlogFromDb = async (skillId: string) => {
   const deleteblog = await Blog.findByIdAndDelete(skillId);
   return deleteblog;
@@ -19,6 +23,7 @@ const DeleteBlogFromDb = async (skillId: string) => {
 
 export const BlogServices = {
   CreateBlogIntoDb,
+  getSingleBlogFromDb,
   getAllBlogFromDb,
   DeleteBlogFromDb,
 };
